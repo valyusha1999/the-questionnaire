@@ -5,18 +5,21 @@ const emailUser = document.querySelector("#email");
 const phoneUser = document.querySelector("#phone");
 const agreeUser = document.querySelector("#agree");
 
-const userData = {};
-userData.name = nameUser.value;
-userData.secondName = secondNameUser.value;
-userData.phone = phoneUser.value;
-userData.email = emailUser.value;
-userData.agree = true;
+
+
 
 
 form.addEventListener("submit", (event) => {
   // Предотвращает действие браузера по умолчанию. В данном случае — отправку формы
   // https://learn.javascript.ru/default-browser-action
   event.preventDefault();
+  const userData = {};
+  userData.name = nameUser.value;
+  userData.secondName = secondNameUser.value;
+  userData.phone = phoneUser.value;
+  userData.email = emailUser.value;
+  userData.agree = true;
+
   if (agreeUser.checked === true) {
     fetch(`https://polinashneider.space/user`, {
       method: 'POST',
@@ -40,6 +43,6 @@ form.addEventListener("submit", (event) => {
   } else {
     alert("Для отправки анкеты нужно согласиться с обработкой персональных данных");
   };
-
+  
   // Здесь твой код
 });
